@@ -1,4 +1,14 @@
 {% extends 'base.html' %} 
 {% block content %}
-<p>users</p>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'user/index.css' %}">
+
+<h4>Become a User today !</h4>
+
+<form method="post" action="{% url 'register' %}">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+</form>
+
 {% endblock %}
