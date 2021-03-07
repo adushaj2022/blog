@@ -9,4 +9,4 @@ class UserProfile(models.Model):
         upload_to='uploads/', blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return self.user.username
