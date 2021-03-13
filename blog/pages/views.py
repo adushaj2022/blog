@@ -9,7 +9,6 @@ def index(request):
     if request.user.is_authenticated:
         user_id = request.user.id
         current_user = UserProfile.objects.get(user_id=user_id)
-
         if request.method == 'POST':
             form = UserProfileForm(request.POST, request.FILES)
             if form.is_valid():

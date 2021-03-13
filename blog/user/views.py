@@ -11,7 +11,8 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            user_profile = UserProfile.objects.create(user=user)
+            user_profile = UserProfile.objects.create(
+                user=user)
             return redirect('/')
     else:
         form = UserCreationForm()

@@ -1,18 +1,18 @@
 {% extends 'base.html' %} 
 {% block content %}
 {% if user.is_authenticated %}
-    <h4>
-       Hi, {{ user.username }} ! Would you like to upload a profile pic
-    </h4>
-
+    <h5>Hi, {{ user.username }}</h5>
     {% if user_profile.profile_pic is None %}
+    <h4>
+        Hi, {{ user.username }} ! Would you like to upload a profile pic
+     </h4> 
     <form action="{% url 'index' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     {% endif %}
-    <img src="{{ user_profile.profile_pic.url }}" alt="">
+    <img src="{{ user_profile.profile_pic.url }}" alt="" class="profile_img">
 {% else %}
     Not logged in.
 {% endif %}

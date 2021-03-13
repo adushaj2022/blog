@@ -6,7 +6,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(
         User, related_name='user_profile', on_delete=models.CASCADE)
     profile_pic = models.ImageField(
-        upload_to='uploads/', blank=True, null=True)
+        upload_to='uploads/', blank=True, null=True, default='uploads/default.png')
 
     def __str__(self):
         return self.user.username
