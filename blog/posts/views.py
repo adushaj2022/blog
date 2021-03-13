@@ -20,7 +20,7 @@ def add_post(request):
             post = form.save(commit=False)
             post.creator = current_user
             post.save()
-            return redirect('/')
+            return redirect('posts')
     else:
         form = PostForm()
     return render(request, 'posts/add_post.html', {'form': form})

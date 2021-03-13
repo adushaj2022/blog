@@ -7,8 +7,12 @@
         <li class="list-group-item">create a post <a href="{% url 'add_post' %}">here</a></li>
         <li class="list-group-item">View all posts <a href="{% url 'posts' %}">here</a></li>
     </ul>
-    <img src="{{ user_profile.profile_pic.url }}" alt="" class="profile_img">
+    <img src="{{ user_profile.profile_pic.url }}" alt="" class="profile_img img-pp">
 {% else %}
-    Not logged in.
+<h5 class="mt-4 text-center">Hi welcome to our blog </h5>
+<ul class="list-group">
+    <li class="list-group-item">if you would like to make posts please create an account <a href="{% url 'register' %}">here</a></li>
+    <li class="list-group-item">View all posts <a href="{% url 'posts' %}">here</a></li>
+</ul>
 {% endif %}
 {% endblock %}
