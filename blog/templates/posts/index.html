@@ -1,4 +1,6 @@
 {% extends 'base.html' %} 
 {% block content %}
-<p>posts</p>
+{% for post in posts %}
+    <p>{{ post.creator }}</p>
+{% endfor %}
 {% endblock %}
