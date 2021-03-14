@@ -3,11 +3,16 @@ from .forms import PostForm
 from django.contrib.auth.decorators import login_required
 from user.models import UserProfile
 from .models import Post
+from django.core.paginator import Paginator
 
 
 def index(request):
     posts = Post.objects.all()
-    return render(request, 'posts/index.html', {'posts': posts})
+    paginator = Paginator(posts, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'posts/index.html', {'posts': posts, 'page_obj': page_obj})
 
 
 @login_required(redirect_field_name='register')
