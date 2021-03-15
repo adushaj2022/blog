@@ -9,10 +9,10 @@ from django.core.paginator import Paginator
 def index(request):
     posts = Post.objects.all()
     paginator = Paginator(posts, 2)
-    page_number = request.GET.get('page')
+    page_number = request.GET['page']
     page_obj = paginator.get_page(page_number)
 
-    return render(request, 'posts/index.html', {'posts': posts, 'page_obj': page_obj})
+    return render(request, 'posts/posts.html', {'posts': posts, 'page_obj': page_obj})
 
 
 @login_required(redirect_field_name='register')
