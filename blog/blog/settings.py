@@ -81,13 +81,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'blog',
+        'NAME': 'blog_1',
 
-        'USER': 'postgres',
+        'USER': 'tony',
 
-        'PASSWORD': '4512',
+        'PASSWORD': 'Forexpro45',
 
-        'HOST': '127.0.0.1',
+        'HOST': 'database-1.cwferegfrq7u.us-east-2.rds.amazonaws.com',
 
         'PORT': '5432',
     }
