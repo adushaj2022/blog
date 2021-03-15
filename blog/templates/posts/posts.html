@@ -5,43 +5,43 @@
   <p>No posts yet</p>
 {% else %}
 
-{% for post in page_obj %}
-<div class="flexify">
-    <div class="card mb-3" style="width: 400px;">
-        <img class="card-img-top" src="{{ post.image.url }}" alt="post">
-        <div class="card-body">
-          <p class="card-text">{{ post.description }}</p>
-          <blockquote class="blockquote mb-0">
-            <footer class="blockquote-footer">{{ post.creator }}</footer>
-          </blockquote>
-        </div>
-      </div>
-</div>
-{% endfor %}
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    {% if page_obj.has_previous %}
-    <li class="page-item">
-      <a href="?page=1" class="page-link">&laquo; first</a>
-    </li>
-    <li class="page-item"> 
-      <a href="?page={{ page_obj.previous_page_number }}" class="page-link">previous</a>
-    </li>
-    {% endif %}
+  {% for post in page_obj %}
+    <div class="flexify">
+        <div class="card mb-3" style="width: 400px;">
+            <img class="card-img-top" src="{{ post.image.url }}" alt="post">
+            <div class="card-body">
+              <p class="card-text">{{ post.description }}</p>
+              <blockquote class="blockquote mb-0">
+                <footer class="blockquote-footer">{{ post.creator }}</footer>
+              </blockquote>
+            </div>
+          </div>
+    </div>
+  {% endfor %}
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      {% if page_obj.has_previous %}
+      <li class="page-item">
+        <a href="?page=1" class="page-link">&laquo; first</a>
+      </li>
+      <li class="page-item"> 
+        <a href="?page={{ page_obj.previous_page_number }}" class="page-link">previous</a>
+      </li>
+      {% endif %}
 
-    <span class="current mt-2 ml-3 mr-3">
-      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-    </span>
+      <span class="current mt-2 ml-3 mr-3">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+      </span>
 
-    {% if page_obj.has_next %}
-    <li class="page-item">
-      <a href="?page={{ page_obj.next_page_number }}" class="page-link">next</a>      
-    </li> 
-    <li class="page-item">
-      <a href="?page={{ page_obj.paginator.num_pages }}" class="page-link">last &raquo;</a>      
-    </li>
-    {% endif %}
-  </ul>
-</nav>
+      {% if page_obj.has_next %}
+      <li class="page-item">
+        <a href="?page={{ page_obj.next_page_number }}" class="page-link">next</a>      
+      </li> 
+      <li class="page-item">
+        <a href="?page={{ page_obj.paginator.num_pages }}" class="page-link">last &raquo;</a>      
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
 {% endif %}
 {% endblock %}

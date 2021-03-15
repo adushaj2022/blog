@@ -20,7 +20,7 @@ def register(request):
     return render(request, 'users/index.html', {'form': form})
 
 
-@login_required(redirect_field_name='register')
+@login_required()
 def add_profile_pic(request):
     user_id = request.user.id
     current_user = UserProfile.objects.get(user_id=user_id)
@@ -38,3 +38,10 @@ def add_profile_pic(request):
 def logout_view(request):
     logout(request)
     return redirect('/')
+
+# show specific users profile page
+
+
+def profile(request, id):
+    user = UserProfile.objects.get(pk=id)
+    return render(request, 'users/profile.html')

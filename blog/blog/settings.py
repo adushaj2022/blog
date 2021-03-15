@@ -136,6 +136,7 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = '/user/register'
 
 
 MEDIA_URL = '/media/'
