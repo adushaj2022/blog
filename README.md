@@ -17,6 +17,7 @@ python -m venv venv
 venv\Scripts\activate
 cd blog
 pip install -r requirements.txt 
+py manage.py migrate
 ```
 To connect to postgres Database please find the settings.py file in blog/blog/ and enter password, port,  username and database <br>
 ![image](https://user-images.githubusercontent.com/47046091/111366856-72772b80-866a-11eb-9cbc-2e392910adfb.png)
