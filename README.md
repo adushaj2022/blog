@@ -10,7 +10,7 @@ Bootstrap <br>
 
 ## Installation
 
-Make sure python 3.7 + is installed on your devices
+Make sure python 3 + is installed on your devices
 
 ```bash
 python -m venv venv
