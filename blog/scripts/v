@@ -1,0 +1,8 @@
+#!/bin/bash
+
+<<COMMENT1
+  bash script for activating virtual environment
+COMMENT1
+
+echo activating Virtual Env
+source c:/Users/tonyc/Documents/WebDevelopment/blog/venv/Scripts/activate
