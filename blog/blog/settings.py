@@ -12,6 +12,15 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
+
+# OR, the same with increased verbosity
+load_dotenv(verbose=True)
+
+# OR, explicitly providing path to '.env'
+env_path = Path('.') / '.env'
+load_dotenv(dotenv_path=env_path)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -80,18 +89,10 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
-        # 'NAME': 'blog_1',
-
-        # 'USER': 'tony',
-
-        # 'PASSWORD': 'Forexpro45',
-
-        # 'HOST': 'database-1.cwferegfrq7u.us-east-2.rds.amazonaws.com',
         'NAME': 'blog',
-        'USER': 'postgres',
-        'PASSWORD': '4512',
-        'PORT': '5432',
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv("DB_PASSWORD"),
+        'PORT': os.getenv("PORT"),
     }
 }
 
