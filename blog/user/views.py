@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserProfileForm
 from .models import UserProfile
 from django.shortcuts import get_object_or_404
+from posts.models import Post
 
 
 def register(request):
@@ -45,4 +46,11 @@ def logout_view(request):
 
 def profile(request, id):
     user = get_object_or_404(UserProfile, pk=id)
-    return render(request, 'users/profile.html', {'user': user})
+    posts = Post.objects.all()
+    return render(request, 'users/profile.html', {'user': user, 'posts': posts})
+
+
+def profile_posts(request, id):
+    user = get_object_or_404(UserProfile, pk=id)
+    posts = Post.objects.filter(creator_id=id)
+    return render(request, 'users/posts.html', {'user': user, 'posts': posts})
