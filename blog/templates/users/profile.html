@@ -1,0 +1,16 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+    <div class="inner-container mt-4">
+        <h5 class="text-center">Hi, {{ user.user.username }}</h5>
+        <ul class="list-group">
+            <li class="list-group-item"><a href="{% url 'add_profile_pic' %}"> Change profile Pic</a></li>
+        </ul>
+        <img src="{{ user.profile_pic.url }}" alt="" class="profile_img img-pp">
+
+        <h5 class="mt-4 text-center"> My Posts </h5>    
+    </div>
+    
+
+
+{% endblock %}

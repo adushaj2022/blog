@@ -4,6 +4,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import UserProfileForm
 from .models import UserProfile
+from django.shortcuts import get_object_or_404
 
 
 def register(request):
@@ -29,7 +30,7 @@ def add_profile_pic(request):
         if form.is_valid():
             current_user.profile_pic = form.cleaned_data['profile_pic']
             current_user.save()
-            return redirect('/')
+            return redirect('/user/profile/'+str(current_user.id)+'/')
     else:
         form = UserProfileForm()
     return render(request, 'users/add_profile_pic.html', {'form': form})
@@ -43,5 +44,5 @@ def logout_view(request):
 
 
 def profile(request, id):
-    user = UserProfile.objects.get(pk=id)
-    return render(request, 'users/profile.html')
+    user = get_object_or_404(UserProfile, pk=id)
+    return render(request, 'users/profile.html', {'user': user})

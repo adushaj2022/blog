@@ -3,16 +3,15 @@
 {% if user.is_authenticated %}
     <h5 class="mt-4 text-center">Hi, {{ user.username }}</h5>
     <ul class="list-group">
-        <li class="list-group-item">if you would like to change your profile picture click <a href="{% url 'add_profile_pic' %}">here</a></li>
+        <li class="list-group-item">if you would like view or change your profile click <a href="{% url 'profile' user_profile.id %}">here</a></li>
         <li class="list-group-item">create a post <a href="{% url 'add_post' %}">here</a></li>
         <li class="list-group-item">View all posts <a href="{% url 'posts' %}">here</a></li>
     </ul>
-    <img src="{{ user_profile.profile_pic.url }}" alt="" class="profile_img img-pp">
 {% else %}
-<h5 class="mt-4 text-center">Hi welcome to our blog </h5>
-<ul class="list-group">
-    <li class="list-group-item">if you would like to make posts please create an account <a href="{% url 'register' %}">here</a></li>
-    <li class="list-group-item">View all posts <a href="{% url 'posts' %}">here</a></li>
-</ul>
+    <h5 class="mt-4 text-center">Hi welcome to our blog </h5>
+    <ul class="list-group">
+        <li class="list-group-item">if you would like to make posts please create an account <a href="{% url 'register' %}">here</a></li>
+        <li class="list-group-item">View all posts <a href="{% url 'posts' %}">here</a></li>
+    </ul>
 {% endif %}
 {% endblock %}
