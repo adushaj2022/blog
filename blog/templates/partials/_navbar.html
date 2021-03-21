@@ -3,7 +3,7 @@
 	  <li class="nav-item">
 		<a class="navbar-brand" href="/">Home</a>
 	  </li>
-	{% if user.is_authenticated %}
+	{% if user.is_authenticated is not False %}
 	<li class="nav-item">
 		<a class="navbar-brand" href="{% url 'logout' %}">Log out</a>
 	  </li>

@@ -12,7 +12,9 @@
             <div class="card-body">
               <p class="card-text">{{ post.description }}</p>
               <blockquote class="blockquote mb-0">
-                <footer class="blockquote-footer">{{ post.creator }}</footer>
+                <a href="{% url 'profile' post.creator.id %}">
+                  <footer class="blockquote-footer">{{ post.creator }}</footer>
+                </a>
               </blockquote>
             </div>
           </div>
