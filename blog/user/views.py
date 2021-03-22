@@ -54,3 +54,8 @@ def profile_posts(request, id):
     user = get_object_or_404(UserProfile, pk=id)
     posts = Post.objects.filter(creator_id=id)
     return render(request, 'users/posts.html', {'user': user, 'posts': posts})
+
+
+def all_profiles(request):
+    profiles = UserProfile.objects.all()
+    return render(request, 'users/all_profiles.html', {'profiles': profiles})
