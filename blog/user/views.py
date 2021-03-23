@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import UserProfileForm
-from .models import UserProfile
+from .models import UserProfile, Relationship
 from django.shortcuts import get_object_or_404
 from posts.models import Post
 
@@ -37,6 +37,7 @@ def add_profile_pic(request):
     return render(request, 'users/add_profile_pic.html', {'form': form})
 
 
+@login_required()
 def logout_view(request):
     logout(request)
     return redirect('/')
@@ -59,3 +60,14 @@ def profile_posts(request, id):
 def all_profiles(request):
     profiles = UserProfile.objects.all()
     return render(request, 'users/all_profiles.html', {'profiles': profiles})
+
+
+@login_required()
+def follow_user(request, id):
+    current_user = UserProfile.objects.get(user_id=request.user.id)
+    user_to_follow = get_object_or_404(UserProfile, pk=id)
+    new_relationship = Relationship()
+    new_relationship.followee = current_user
+    new_relationship.following = user_to_follow
+    new_relationship.save()
+    return redirect('/')
