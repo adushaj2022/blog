@@ -77,4 +77,13 @@ def follow_user(request, id):
     new_relationship.followee = current_user
     new_relationship.following = user_to_follow
     new_relationship.save()
-    return redirect('/')
+    return redirect('/user/profiles/')
+
+
+@login_required()
+def unfollow_user(request, id):
+    current_user = UserProfile.objects.get(user_id=request.user.id)
+    unfollow = Relationship.objects.filter(
+        followee_id=current_user.id, following_id=id)
+    unfollow.delete()
+    return redirect('/user/profiles/')
