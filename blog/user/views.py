@@ -59,7 +59,14 @@ def profile_posts(request, id):
 
 def all_profiles(request):
     profiles = UserProfile.objects.all()
-    return render(request, 'users/all_profiles.html', {'profiles': profiles})
+    current_user = UserProfile.objects.get(user_id=request.user.id)
+    does_follows = {}
+    for prof in profiles:
+        if current_user.does_follow(prof.id):
+            does_follows[prof.id] = True
+        else:
+            does_follows[prof.id] = False
+    return render(request, 'users/all_profiles.html', {'profiles': profiles, 'does_follows': does_follows})
 
 
 @login_required()

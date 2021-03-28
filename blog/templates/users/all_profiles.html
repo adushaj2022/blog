@@ -12,10 +12,25 @@
                         <div class="d-flex flex-column"> <span class="articles">Posts</span> <span class="number1">{{ profile.num_of_posts }}</span> </div>
                         <div class="d-flex flex-column"> <span class="followers">Followers</span> <span class="number2">{{ profile.num_of_followers }}</span> </div>                </div>
                         <div class="button mt-2 d-flex flex-row align-items-center">
-                            <a href="{% url 'follow' profile.id %}">
-                                <button class="btn btn-sm btn-primary w-100 ml-2">Follow</button> 
+                                <button class="btn btn-sm btn-primary w-100 ml-2">
+                                    {% for key, value in does_follows.items %}
+                                        {% if key == profile.id %}
+                                            {% if value %}
+                                            <a href="{% url 'follow' profile.id %}" class="text-white">
+                                                unfollow
+                                            </a>
+                                            {% else %}
+                                            <a href="{% url 'follow' profile.id %}" class="text-white">
+                                                follow
+                                            </a>
+                                            {% endif %}
+
+                                        {% endif %}
+                                    {% endfor %}
+                                </button> 
                             </a>
                         </div>
+                        
                 </div>
             </div>
         </div>

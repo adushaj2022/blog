@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.apps import apps
+from django import template
 
 
 class UserProfile(models.Model):
@@ -23,6 +24,13 @@ class UserProfile(models.Model):
     def followee_count(self):
         relationships = apps.get_model('user', 'Relationship')
         return relationships.objects.filter(followee=self).count()
+
+    def does_follow(self, fid):
+        relationships = apps.get_model('user', 'Relationship')
+        if relationships.objects.filter(followee=self, following_id=fid).count() == 1:
+            return True
+        else:
+            return False
 
     num_of_followers = property(follower_count)
     num_of_followees = property(followee_count)
