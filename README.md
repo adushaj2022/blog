@@ -33,6 +33,7 @@ py manage.py runserver
   <li>Pagination</li>
   <li>Image Uploading</li>
   <li>Protected Auth Routes</li>
+  <li>Following / Unfollowing user</li>
 </ul>
 
 ## Contributing
