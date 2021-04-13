@@ -3,7 +3,7 @@
 
     {% if user.user.id != request.user.id %}
     <div class="inner-container mt-4">
-        <h5 class="text-center"> {{ user.user.username }}</h5>
+        <h5 class="text-center"> {{ user.user.username }} - {{ user.num_of_followers}} Followers</h5>
         <ul class="list-group">
             <li class="list-group-item"><a href="{% url 'index' %}"> Back to home </a></li>
             <li class="list-group-item"><a href="{% url 'profile' user.id  %}posts"> View {{ user.user.username }}'s posts</a></li>
