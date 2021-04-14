@@ -6,7 +6,7 @@ from django import template
 
 class UserProfile(models.Model):
     user = models.OneToOneField(
-        User, related_name='user_profile', on_delete=models.CASCADE)
+        User, on_delete=models.CASCADE)
     profile_pic = models.ImageField(
         upload_to='uploads/', blank=True, null=True, default='uploads/default.png')
 
