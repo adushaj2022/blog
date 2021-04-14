@@ -1,7 +1,7 @@
 
 from django.db import models
-from blog.posts.models import Post
-from blog.user.models import UserProfile
+from posts.models import Post
+from user.models import UserProfile
 
 
 class Comment(models.Model):
