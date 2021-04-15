@@ -20,6 +20,9 @@
     {% else %}
     <div class="inner-container mt-4">
         <h5 class="text-center"> {{ user.user.username }}</h5>
+        <h6>
+            You have {{ user.num_of_followers }} followers and are following {{ user.num_of_followees }} other users
+        </h6>
         <ul class="list-group">
             <li class="list-group-item"><a href="{% url 'index' %}"> Back to home </a></li>
             <li class="list-group-item"><a href="{% url 'profile' user.id  %}posts"> View my posts</a></li>

@@ -3,8 +3,8 @@
 {% if user.is_authenticated %}
     <h5 class="mt-4 text-center">Hi, {{ user.username }}</h5>
     <ul class="list-group">
-        <li class="list-group-item">if you would like view or change your profile click <a href="{% url 'profile' user_profile.id %}">here</a></li>
-        <li class="list-group-item">create a post <a href="{% url 'add_post' %}">here</a></li>
+        <li class="list-group-item">View your profile <a href="{% url 'profile' user_profile.id %}">here</a></li>
+        <li class="list-group-item">Create a post <a href="{% url 'add_post' %}">here</a></li>
         <li class="list-group-item">View all posts <a href="{% url 'posts' %}">here</a></li>
         <li class="list-group-item">View all users <a href="{% url 'profiles' %}">here</a></li>
     </ul>

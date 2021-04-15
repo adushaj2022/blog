@@ -43,6 +43,7 @@
     <!-- NavBar -->
     <div class="container">
       {% include 'partials/_navbar.html' %}
+      <input class="mt-3 btn btn-link" type=button value="Previous Page" onClick="javascript:history.go(-1);">
       <div class="row">
         <div class="col-md-6 m-auto">
           {% block content %}{% endblock %}
