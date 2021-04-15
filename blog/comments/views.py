@@ -14,6 +14,7 @@ def index(request, id):
     user_id = request.user.id
     current_user = UserProfile.objects.get(user_id=user_id)
     form = CommentForm()
-    post_comment = comments(id)
+    post_comments = comments(id)
+    print(post_comments)
     context = {'post': post, 'form': form}
     return render(request, 'comments/index.html', context)
