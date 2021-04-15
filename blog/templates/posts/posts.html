@@ -11,6 +11,7 @@
             <img class="card-img-top" src="{{ post.image.url }}" alt="post">
             <div class="card-body">
               <p class="card-text">{{ post.description }}</p>
+              <p class="card-text"><a href="{% url 'comment' post.id %}" >Comments</a></p>
               <blockquote class="blockquote mb-0">
                 <a href="{% url 'profile' post.creator.id %}">
                   <footer class="blockquote-footer">{{ post.creator }}</footer>
