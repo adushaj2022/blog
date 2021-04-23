@@ -23,6 +23,18 @@
     {{ form }} <br>
     <button type="submit" class="btn btn-primary">Post</button>
 </form>
+
+<div>
+  <h4 class="mt-3 mb-3">
+    Heres what other people are saying: 
+  </h4> 
+  <ul>
+    {% for c in post_comments %}
+    <li><strong>{{ c.creator }}</strong>: {{ c.body }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
 {% load static %}
 <script src="{% static '/js/post.js' %}"></script>
 

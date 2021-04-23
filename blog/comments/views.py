@@ -13,8 +13,16 @@ def index(request, id):
     post = get_object_or_404(Post, pk=id)
     user_id = request.user.id
     current_user = UserProfile.objects.get(user_id=user_id)
-    form = CommentForm()
     post_comments = comments(id)
-    print(post_comments)
-    context = {'post': post, 'form': form}
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.creator = current_user
+            comment.post = post
+            comment.save()
+    else:
+        form = CommentForm()
+
+    context = {'post': post, 'form': form, 'post_comments': post_comments}
     return render(request, 'comments/index.html', context)
